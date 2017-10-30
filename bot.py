@@ -1,5 +1,5 @@
 import requests
-import datetime
+from random import choice
 
 
 class BotHandler:
@@ -37,6 +37,7 @@ bot = BotHandler('454279758:AAFwAo5Te7YFOV_ZtO5u7V3FpXGUzGn7ePQ')
 
 def main():
     new_offset = None
+    last_msg = None
     while True:
         bot.get_updates(new_offset)
 
@@ -51,7 +52,12 @@ def main():
         if last_chat_text == '/start':
             bot.send_message(last_chat_id, 'Чего стоим? Сели! Урок начался.')
         else:
-            bot.send_message(last_chat_id, 'Помолчи. Я не твоя собственность!')
+            if last_msg == 'Ты. К доске!':
+                msg = "Кто ты сегодня?"
+            else:
+                msg = choice('Ты. К доске!', 'Помолчи! Я не твоя собственность.')
+                last_msg = msg
+                bot.send_message(last_chat_id, msg)
         # /handling
 
         new_offset = last_update_id + 1
