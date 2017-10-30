@@ -32,7 +32,7 @@ class BotHandler:
         return last_update
 
 
-bot = BotHandler('403156467:AAFT-jRBLeYXs40YuNYAhca8DNwL6xvetd4')
+bot = BotHandler('454279758:AAFwAo5Te7YFOV_ZtO5u7V3FpXGUzGn7ePQ')
 
 
 def main():
@@ -48,12 +48,10 @@ def main():
         last_chat_name = last_update['message']['chat']['first_name']  # никнейм пользователя
 
         # handling
-        if last_chat_text.lower() == 'пошути':
-            bot.send_message(last_chat_id, 'Колобок повесился!')
-        elif last_chat_text == '/start':
-            bot.send_message(last_chat_id, 'Привет, братан! Можешь со мной трещать, когда тебе скучно.')
+        if last_chat_text == '/start':
+            bot.send_message(last_chat_id, 'Чего стоим? Сели! Урок начался.')
         else:
-            timick_bot.send_message(last_chat_id, 'Я пока слишком тупой и не могу ответить на такое сообщение :(')
+            bot.send_message(last_chat_id, 'Помолчи. Я не твоя собственность!')
         # /handling
 
         new_offset = last_update_id + 1
